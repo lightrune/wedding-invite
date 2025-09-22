@@ -1,0 +1,66 @@
+Kakao.init('700fc31d483a5614088956bdb5f2c85d');
+$(document).ready(function() {
+    
+    const flicking = new Flicking(".slide_photo", { // 옵션 설정
+        circular: true,
+        panelsPerView : 1,
+        duration: 300
+    });
+    flicking.addPlugins(new Flicking.Plugins.Pagination({ // fraction타입(텍스트 ex: 1/5) 내비게이션 플러그인 사용시 추가
+        type: "fraction"
+    }));
+   
+    $('.info_bank .head_bank').on('click', function(){
+        $(this).parent().toggleClass('on');
+        return false;
+    });
+    
+    $('.link_copy').on('click',function(){
+        var text ="";
+        text = $(this).parent().find('.num_bank').text();
+        $('#clip_target').val(text);
+        $('#clip_target').select();
+
+        document.execCommand('copy');
+        alert('계좌번호가 복사 되었습니다 : )');
+        
+        return false;
+        
+    });
+
+    $('.link_url').on('click',function(){
+        var dummy   =  $('#clip_target');
+        var text_url    = location.href;
+        // console.log(text_url);
+        
+        dummy.val(text_url);
+        dummy.select();
+        document.execCommand("copy");
+        alert('청첩장 url이 복사 되었습니다 : )');
+        return false;
+    });
+
+});
+
+function shareKakaotalk(){
+    Kakao.Link.sendDefault({
+        objectType: 'feed',
+        content: {
+            title: '최성열 ♡ 이혜은 결혼합니다.',
+            description: '2025년 9월 20일(토) 오후 12시 30분\n더 세인트 41층 파노라마홀',
+            imageUrl: 'https://www.small-square.com/invite/250920_taehwan_yuri/images/photo_preview.jpg',
+            link: {
+                mobileWebUrl: 'https://www.small-square.com/invite/250920_taehwan_yuri/index.html',
+                webUrl: 'https://www.small-square.com/invite/250920_taehwan_yuri/index.html'
+            }
+        },
+        buttons: [{
+                title: '청첩장 보러가기',
+                link: {
+                    mobileWebUrl: 'https://www.small-square.com/invite/250920_taehwan_yuri/index.html',
+                    webUrl: 'https://www.small-square.com/invite/250920_taehwan_yuri/index.html'
+                }
+            }
+        ]
+    });
+}
