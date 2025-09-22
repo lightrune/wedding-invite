@@ -47,7 +47,7 @@ function shareKakaotalk(){
         objectType: 'feed',
         content: {
             title: '최성열 ♡ 이혜은 결혼합니다.',
-            description: '2025년 9월 20일(토) 오후 12시 30분\n더 세인트 41층 파노라마홀',
+            description: '2025년 9월 28일(일) 오후 16시 00분\n더 세인트 41층 파노라마홀',
             imageUrl: 'https://www.small-square.com/invite/250920_taehwan_yuri/images/photo_preview.jpg',
             link: {
                 mobileWebUrl: 'https://www.small-square.com/invite/250920_taehwan_yuri/index.html',
